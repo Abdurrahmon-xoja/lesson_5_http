@@ -1,16 +1,9 @@
-const http = require('http');
-const os = require('os');
+const http = require('https');
 
+http.get('https://www.youtube.com/' , res => {
+    res.setEncoding('utf-8');
 
-
-function serverFunction (request,respons){
-    console.log(request.headers);
-    respons.end('babu hello')
-}
-
-const server = http.createServer(serverFunction)
-
-
-server.listen(8080 , () => {
-    console.log('http://' + os.networkInterfaces().en0[1].address + ':' + 8080);
-});
+    res.on('data' , data => {
+        console.log(data);
+    })
+})
